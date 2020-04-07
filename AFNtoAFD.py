@@ -30,10 +30,10 @@ for i in range(1,maxim_st+1):   #decomentati liniile de printare pentru a vedea 
 #print(start)
 #print(final)
 parcurs=[] #vector in care retinem nodurile prin care am trecut
-b[1][1]=a[1][1]
-b[1][2]=a[1][2]
-parcurs.append(a[1][1])
-parcurs.append(a[1][2])
+b[1][1]=a[start][1]
+b[1][2]=a[start][2]
+parcurs.append(a[start][1])
+parcurs.append(a[start][2])
 poz=0   #variabila cu care determin litera de legatura din alfabet
 indice=1    #indice de linie in noua matrice a relatiilor
 b[indice][1]=a[1][1]
@@ -70,7 +70,7 @@ def verify(x):  #verifica daca starea obtinuta x este finala sau nu
             if k == int(x[l]):
                 return 1
     return 0
-parcurs.insert(0,str(1))    #adaug si starea din care am inceput parcurgerea
+parcurs.insert(0,str(start))    #adaug si starea din care am inceput parcurgerea
 print("AFD-ul obtinut este:")
 for i in range(1,len(parcurs)+1):
     for j in range(1,maxim_lit+1):
