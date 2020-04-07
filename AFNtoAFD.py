@@ -18,8 +18,8 @@ for i in range(nr):
     if ord(x[2])-ord('a')+1>maxim_lit:
         maxim_lit=ord(x[2])-ord('a')+1
     a[int(x[0])][ord(x[2])-ord('a')+1]=x[1]+(str(a[int(x[0])][ord(x[2])-ord('a')+1]) if str(a[int(x[0])][ord(x[2])-ord('a')+1])!='0' else '')
-start=int(f.readline())
-final=[]
+start=int(f.readline()) #starea initiala
+final=[]    #starile finale
 for x in f.readline().split():
     final.append(int(x))
 for i in range(1,maxim_st+1):
@@ -35,23 +35,37 @@ b[1][2]=a[1][2]
 parcurs.append(a[1][1])
 parcurs.append(a[1][2])
 poz=0   #variabila cu care determin litera de legatura din alfabet
+indice=1
+b[indice][1]=a[1][1]
+b[indice][2]=a[1][2]
+indice+=1
 for x in parcurs:
-    curent=''
-    if len(x)>1:
-        ind=0
-        while(ind<len(x)):
-            if a[int(x[ind])][poz % maxim_lit+1]!='0' and a[int(x[ind])][poz % maxim_lit+1] not in curent:
-                curent=curent+a[int(x[ind])][poz % maxim_lit]
-            ind+=1
-        curent=''.join(sorted(curent))
-    elif a[int(x)][poz % maxim_lit+1]!='0':
-        curent=a[int(x)][poz % maxim_lit+1]
-    #print(curent,int(x),poz % maxim_lit+1)
-    if curent!='' and curent not in parcurs:
-        parcurs.append(curent)
-    poz+=1
+    poz=0
+    while poz<maxim_lit:
+        curent = ''
+        if len(x)>1:
+            ind=0
+            while(ind<len(x)):
+                #print(a[int(x[ind])][poz % maxim_lit+1],end=' ')
+                for j in range(len(str(a[int(x[ind])][poz % maxim_lit+1]))):
+                    if a[int(x[ind])][poz % maxim_lit+1][j]!='0' and a[int(x[ind])][poz % maxim_lit+1][j] not in curent:
+                        curent=curent+a[int(x[ind])][poz % maxim_lit+1][j]
+                ind+=1
+            #print(curent)
+            #if curent!='':
+            curent=''.join(sorted(curent))
+            #print(curent)
+        elif a[int(x)][poz % maxim_lit+1]!='0':
+            curent=a[int(x)][poz % maxim_lit+1]
+        if curent!='':
+            b[indice][poz % maxim_lit + 1]=curent
+        if curent!='' and curent not in parcurs:
+            parcurs.append(curent)
+            #print(curent, int(x))
+        poz+=1
+    indice+=1
 print(parcurs)
-
-
-#for i in range(1,maxim_st+1):
-    #for j in range(1,maxim_lit+1):
+for i in range(1,len(parcurs)+2):
+    for j in range(1,maxim_lit+1):
+        print(b[i][j],end=' ')
+    print()
