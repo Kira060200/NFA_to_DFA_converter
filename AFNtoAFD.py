@@ -27,8 +27,8 @@ for i in range(1,maxim_st+1):   #decomentati liniile de printare pentru a vedea 
         a[i][j]=''.join(sorted(str(a[i][j])))
         #print(a[i][j],end=' ')
     #print('')
-print(start)
-print(final)
+#print(start)
+#print(final)
 parcurs=[] #vector in care retinem nodurile prin care am trecut
 b[1][1]=a[1][1]
 b[1][2]=a[1][2]
@@ -46,7 +46,6 @@ for x in parcurs:
         if len(x)>1:
             ind=0
             while(ind<len(x)):
-                #print(a[int(x[ind])][poz % maxim_lit+1],end=' ')
                 for j in range(len(str(a[int(x[ind])][poz % maxim_lit+1]))):
                     if a[int(x[ind])][poz % maxim_lit+1][j]!='0' and a[int(x[ind])][poz % maxim_lit+1][j] not in curent:
                         curent=curent+a[int(x[ind])][poz % maxim_lit+1][j]
@@ -60,7 +59,7 @@ for x in parcurs:
             parcurs.append(curent)
         poz+=1
     indice+=1
-print(parcurs)
+#afiseaza matricea finala a relatiilor
 for i in range(1,len(parcurs)+2):
     for j in range(1,maxim_lit+1):
         print(b[i][j],end=' ')
@@ -71,8 +70,8 @@ def verify(x):  #verifica daca starea obtinuta x este finala sau nu
             if k == int(x[l]):
                 return 1
     return 0
-parcurs.insert(0,str(1))
-print(parcurs)
+parcurs.insert(0,str(1))    #adaug si starea din care am inceput parcurgerea
+print("AFD-ul obtinut este:")
 for i in range(1,len(parcurs)+1):
     for j in range(1,maxim_lit+1):
         if b[i][j]!='0':
