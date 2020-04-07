@@ -1,5 +1,4 @@
 f=open("data.in")
-g=open("data.out","w")
 a=[['0' for x in range(100)] for y in range(100)] #matricea initiala a relatiilor
 b=[['0' for x in range(100)] for y in range(100)] #matricea finala a AFD-ului obtinut
 def lexicographic_sort(s):
@@ -7,8 +6,8 @@ def lexicographic_sort(s):
 nr=int(f.readline())
 #v=[int(x) for x in f.readline().split()]
 #print(ord('c')-ord('a'))
-maxim_st=0; #numarul maxim de stari
-maxim_lit=0;    #numarul maxim de litere
+maxim_st=0 #numarul maxim de stari
+maxim_lit=0    #numarul maxim de litere
 for i in range(nr):
     x = f.readline().split()
     if int(x[0])>maxim_st:
@@ -35,10 +34,7 @@ b[1][2]=a[start][2]
 parcurs.append(a[start][1])
 parcurs.append(a[start][2])
 poz=0   #variabila cu care determin litera de legatura din alfabet
-indice=1    #indice de linie in noua matrice a relatiilor
-b[indice][1]=a[1][1]
-b[indice][2]=a[1][2]
-indice+=1
+indice=2    #indice de linie in noua matrice a relatiilor
 for x in parcurs:
     poz=0   #litera de legatura
     while poz<maxim_lit:
